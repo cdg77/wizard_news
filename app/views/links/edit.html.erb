@@ -1,0 +1,12 @@
+<h1>Edit Link</h1>
+
+<% if @link.errors.any? %>
+  <h3>Please fix errors: </h3>
+  <ul>
+    <% @link.errors.full_message.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render "form" %>

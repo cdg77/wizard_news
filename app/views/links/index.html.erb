@@ -3,9 +3,11 @@
 <ul>
   <% @links.each do |link| %>
     <hr>
-    <li><%= link.title %></li>
+    <li><%= link_to link.title, link_path(link) %></li>
     <li><%= link.url %></li>
     <li><%= link.votes %></li>
     <hr>
   <% end %>
 </ul>
+
+<%= link_to 'New Link', new_link_path %>
