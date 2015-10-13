@@ -1,0 +1,11 @@
+<h2>Links</h2>
+
+<ul>
+  <% @links.each do |link| %>
+    <hr>
+    <li><%= link.title %></li>
+    <li><%= link.url %></li>
+    <li><%= link.votes %></li>
+    <hr>
+  <% end %>
+</ul>
