@@ -2,8 +2,30 @@
 <h4>URL: <%= @link.url %></h4>
 <h4>Votes: <%= @link.votes %></h4>
 
-<p><%= link_to "return to list of Links", links_path %></p>
-<p><%= link_to "Edit", edit_link_path(@link) %></p>
-<p><%= link_to "Delete", link_path(@link),
+<% if @link.comments.any? %>
+  <h4>Comments: </h4>
+  <ul>
+    <% @link.comments.each do |comment| %>
+      <li>
+        <%= comment.body %> |
+        <%= link_to "Edit Comment", edit_link_comment_path(@link, comment) %> |
+        <%= link_to "Delete Comment", link_comment_path(@link, comment),
+                                  :data => { :confirm => 'You sure you want to delete?',
+                                              :method => 'delete' } %>
+
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Ain't nobody got nothin to say about this yet?</p>
+
+<% end %>
+
+
+
+<p><%= link_to "Edit Link", edit_link_path(@link) %></p>
+<p><%= link_to "Delete this Link", link_path(@link),
                           :data => { :confirm => 'You sure you want to delete?',
                                       :method => 'delete' } %></p>
+
+<p><%= link_to "return to list of Links", links_path %></p>
