@@ -3,3 +3,7 @@
 <h4>Votes: <%= @link.votes %></h4>
 
 <p><%= link_to "return to list of Links", links_path %></p>
+<p><%= link_to "Edit", edit_link_path(@link) %></p>
+<p><%= link_to "Delete", link_path(@link),
+                          :data => { :confirm => 'You sure you want to delete?',
+                                      :method => 'delete' } %></p>

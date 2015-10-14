@@ -37,6 +37,12 @@ class LinksController < ApplicationController
     end
   end
 
+  def destroy
+    @link = Link.find(params[:id])
+    @link.destroy
+    redirect_to links_path
+  end
+
 
   # this is to handle potential malicious code
   private
